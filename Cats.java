@@ -10,9 +10,9 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class Cats {
-    ChromeDriver driver; // zadeklarirovali
+    ChromeDriver driver; 
 
-    //ьметод открывать страничку
+   
     @BeforeEach
     public void setup() {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\kamil\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
@@ -26,7 +26,7 @@ public class Cats {
         //driver.get("http://suninjuly.github.io/cats.html");
         //proverka chto zagolovok cat memes
         WebElement header = driver.findElement(By.cssSelector("[class='jumbotron-heading']"));//v skobkax locator ukazivaj
-        //System.out.println(header.getText());//header - zagolov i text, chto nuzno text proveritj
+        //System.out.println(header.getText());
         //proverka imenno togo text
         assertEquals("Cat memes",header.getText());
         //slomali test assertEquals("Dogs memes",header.getText());
@@ -43,25 +43,25 @@ public class Cats {
     //check that "I love you so much" in name of last card
     @Test
     public void nameOfLastCatCardTest(){
-        WebElement nameOfLastCatCard = driver.findElement(By.xpath("//div[@class='col-sm-4'][6]//p']"));// chtobi najti element text I love you so much "//p[text()='I love you so much']"
+        WebElement nameOfLastCatCard = driver.findElement(By.xpath("//div[@class='col-sm-4'][6]//p']"));
         assertEquals("I love you so much",nameOfLastCatCard.getText());
     }
 @Test
     public void catsAlbumTittleTest() {
-        WebElement catsAlbumTittle = driver.findElement(By.tagName("strong")); // esli edinsvennij na straniche element
-        assertTrue(catsAlbumTittle.isDisplayed());//ubeditsja chto on otobrazaetsja na strnichke
+        WebElement catsAlbumTittle = driver.findElement(By.tagName("strong")); 
+        assertTrue(catsAlbumTittle.isDisplayed());
     }
 //first cat card is displayed
 @Test
 public void firstCatCardIsDisplayedTest() {
     WebElement firstCard = driver.findElement(By.xpath("//*[@class='col-sm-4'][1]"));
-    assertTrue(firstCard.isDisplayed());//ubeditsja chto on otobrazaetsja na strnichke
+    assertTrue(firstCard.isDisplayed());
 }
 //check that 6 cards
     @Test
     public void checkCardQuantityTest() {
         List<WebElement> cards = driver.findElements(By.className("col-sm-4"));
-        assertEquals (6, cards.size()); // spisok web elementov po lokatoru.nazvanie klassa bez . Najdet vse kartochki
+        assertEquals (6, cards.size()); 
     }
     //check that 6 images are on the page
     @Test
@@ -74,7 +74,7 @@ public void firstCatCardIsDisplayedTest() {
     public void checkAllCardsAreDisplayedTest() {
         List<WebElement> cards = driver.findElements(By.className("col-sm-4"));
         for (int i = 0; i < cards.size(); i++) {
-            assertTrue(cards.get(i).isDisplayed()); // etot element otobrazatsja
+            assertTrue(cards.get(i).isDisplayed());
         }
     }
         /*
@@ -89,14 +89,13 @@ public void firstCatCardIsDisplayedTest() {
         //check that all cards have np empty names - chto net pustoj stroki
      @Test
         public void allCardsNamesAreNotEmpty(){
-            List<WebElement> names = driver.findElements(By.tagName("p"));// p - potomu chto text najti mozno po //p
+            List<WebElement> names = driver.findElements(By.tagName("p"));
          for (WebElement name: names) {
-             assertFalse(name.getText().isEmpty()); // to chto strochka ne pustaja
+             assertFalse(name.getText().isEmpty()); 
          }
         }
 
-    @AfterEach //vsegda vipolnit niznej methode
-    //vipalnilsja test ili net, window zakrivaetsja
+    @AfterEach 
     public void tearDown() {
         driver.quit();
     }
