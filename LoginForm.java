@@ -30,7 +30,7 @@ public class LoginForm {
         driver.quit();
     }
 
-    @Test
+   @Test
     public void successLoginValidDataTest() {
         WebElement userNameInputField = driver.findElement(By.id("username"));
         userNameInputField.sendKeys("tester@crossbrowsertesting.com");
@@ -41,8 +41,9 @@ public class LoginForm {
         WebElement loginButton = driver.findElement(By.tagName("button")); // //button
         loginButton.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // dozdatsja sled str.zamesto sleep
-        WebElement uniqueElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("logged-in-message")));
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // Javnoe ozidanie - dozdatsja sled str.zamesto sleep potomu chto sleep tratit sliwkom mnogo vremeni
+        //WebElement until =
+               // wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("logged-in-message")));
 
         WebElement successLoginText = driver.findElement(By.id("logged-in-message")); // logged-in-message h2 валится тест
         assertEquals("Welcome tester@crossbrowsertesting.com\n" + "You are now logged in!", successLoginText.getText());
@@ -59,8 +60,9 @@ public class LoginForm {
         WebElement loginButton = driver.findElement(By.tagName("button")); // //button
         loginButton.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // dozdatsja sled str.zamesto sleep
-        WebElement uniqueElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ng-binding")));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // dozdatsja sled str.zamesto sleep - Javnoe ozidanie
+       // WebElement until =
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ng-binding")));
 
         WebElement registrationWithSpace = driver.findElement(By.className("ng-binding"));
         assertEquals("Username or password is incorrect",registrationWithSpace.getText());
@@ -106,7 +108,8 @@ public class LoginForm {
         loginButton.click();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // dozdatsja sled str.zamesto sleep
-        WebElement uniqueElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ng-binding")));
+        //WebElement until =
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ng-binding")));
 
         WebElement invalidPassword = driver.findElement(By.className("ng-binding"));
         assertEquals("Username or password is incorrect",invalidPassword.getText());
