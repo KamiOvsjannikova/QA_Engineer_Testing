@@ -21,13 +21,13 @@ public class Registration {
         driver.get("https://suninjuly.github.io/registration1.html");
     }
 
-    @AfterEach//metod ,kotorij pozvoljaet zakrivatj brauzer posle kazhdogo testa, dazhe ,esli test padaet
+    @AfterEach
     public void tearDown() {
 
         driver.quit();
     }
     @Test
-    public void successRegistration () throws InterruptedException { // kogda mi mozem uspewno zaregatsja
+    public void successRegistration () throws InterruptedException { 
         WebElement firstNameInputField=driver.findElement(By.cssSelector("[placeholder='Input your first name']"));
         firstNameInputField.sendKeys("John");
         WebElement lastNameInputField=driver.findElement(By.cssSelector("[placeholder='Input your last name']"));
@@ -36,9 +36,9 @@ public class Registration {
         EmailInputField.sendKeys("smith@gmail.com");
         WebElement submitButton=driver.findElement(By.cssSelector("[type='submit']"));
         submitButton.click();
-        sleep(10000);// pokazivaet nam 10 sekund kak zapolnjaetsja tablica //on budet chtobi ne proizowlo zdatj 10000
+        sleep(10000);// pokazivaet nam 10 sekund kak zapolnjaetsja tablica 
         WebElement congratsHeader=driver.findElement(By.cssSelector(".container h1"));
-        assertEquals("Congratulations! You have successfully registered!", congratsHeader.getText());//proverjaem, chto posle nazhatija knopki submit na novoj stranici mi vidim privetstvennuju zapisj
+        assertEquals("Congratulations! You have successfully registered!", congratsHeader.getText());
     }
     @Test
     public void successRegistrationWithAllFields () throws InterruptedException {
@@ -58,13 +58,12 @@ public class Registration {
         WebElement submitButton=driver.findElement(By.cssSelector("[type='submit']"));
         submitButton.click();
         WebElement congratsHeader=driver.findElement(By.cssSelector(".container h1"));
-        assertEquals("Congratulations! You have successfully registered!", congratsHeader.getText());//proverjaem, chto posle nazhatija knopki submit na novoj stranice mi vidim privetstvennuju zapisj
+        assertEquals("Congratulations! You have successfully registered!", congratsHeader.getText());
 
 
         //kak dostutchatsja do URL
-        //assertEquals("https://suninjuly.github.io/registration_result.html?",driver.getCurrentUrl()); //System.out.println(driver.getCurrentUrl()); //dostatj URL tekuwij
-        assertTrue(driver.getCurrentUrl().contains("registration_result"));//to chto naxoditsja registration result ,
-        // a ne vsja strochka, potomu chto driver.getCurrentURL uze soderzit https://suninjuly.github.io
+        //assertEquals("https://suninjuly.github.io/registration_result.html?",driver.getCurrentUrl()); //System.out.println(driver.getCurrentUrl()); 
+        assertTrue(driver.getCurrentUrl().contains("registration_result"));/
 
     }
     // na negativnij test napistatj
@@ -83,7 +82,7 @@ public class Registration {
         assertTrue(driver.getCurrentUrl().contains("registration1"));
         //proverka vsplivauwego okna ZAPOLNITE ETO POLE
         WebElement firstNameInputField=driver.findElement(By.cssSelector("[placeholder='Input your first name']"));
-        //System.out.println(firstNameInputField.getAttribute("validationMessage")); //proverka vsplivauwego okna ZAPOLNITE ETO POLE.Eto iz okna Properties
+        //System.out.println(firstNameInputField.getAttribute("validationMessage")); 
         assertEquals("Please fill out this field.",firstNameInputField.getAttribute("validationMessage"));
 
     }
@@ -102,7 +101,7 @@ public class Registration {
         assertTrue(driver.getCurrentUrl().contains("registration1"));
         //proverka vsplivauwego okna ZAPOLNITE ETO POLE
         WebElement lastNameInputField=driver.findElement(By.cssSelector("[placeholder='Input your last name']"));
-        //System.out.println(firstNameInputField.getAttribute("validationMessage")); //proverka vsplivauwego okna ZAPOLNITE ETO POLE.Eto iz okna Properties
+        //System.out.println(firstNameInputField.getAttribute("validationMessage")); 
         assertEquals("Please fill out this field.",lastNameInputField.getAttribute("validationMessage"));
 
     }
