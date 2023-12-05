@@ -24,7 +24,7 @@ public class LoginForm {
         driver.get("https://crossbrowsertesting.github.io/login-form.html");
     }
 
-    @AfterEach//metod ,kotorij pozvoljaet zakrivatj brauzer posle kazhdogo testa, dazhe ,esli test padaet
+    @AfterEach
     public void tearDown() {
 
         driver.quit();
@@ -41,11 +41,11 @@ public class LoginForm {
         WebElement loginButton = driver.findElement(By.tagName("button")); // //button
         loginButton.click();
 
-        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // Javnoe ozidanie - dozdatsja sled str.zamesto sleep potomu chto sleep tratit sliwkom mnogo vremeni
+        //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         //WebElement until =
                // wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("logged-in-message")));
 
-        WebElement successLoginText = driver.findElement(By.id("logged-in-message")); // logged-in-message h2 валится тест
+        WebElement successLoginText = driver.findElement(By.id("logged-in-message"));
         assertEquals("Welcome tester@crossbrowsertesting.com\n" + "You are now logged in!", successLoginText.getText());
     }
 
@@ -60,7 +60,7 @@ public class LoginForm {
         WebElement loginButton = driver.findElement(By.tagName("button")); // //button
         loginButton.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // dozdatsja sled str.zamesto sleep - Javnoe ozidanie
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); 
        // WebElement until =
                 wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ng-binding")));
 
@@ -78,7 +78,7 @@ public class LoginForm {
         loginButton.click();
 
         WebElement userNameInputField = driver.findElement(By.id("username"));
-        //System.out.println(firstNameInputField.getAttribute("validationMessage")); //proverka vsplivauwego okna ZAPOLNITE ETO POLE.Eto iz okna Properties
+        //System.out.println(firstNameInputField.getAttribute("validationMessage")); 
         assertEquals("Please fill out this field.",userNameInputField.getAttribute("validationMessage"));
 
     }
@@ -92,7 +92,7 @@ public class LoginForm {
         loginButton.click();
 
         WebElement passwordInputField = driver.findElement(By.id("password"));
-        //System.out.println(firstNameInputField.getAttribute("validationMessage")); //proverka vsplivauwego okna ZAPOLNITE ETO POLE.Eto iz okna Properties
+        //System.out.println(firstNameInputField.getAttribute("validationMessage"));
         assertEquals("Please fill out this field.",passwordInputField.getAttribute("validationMessage"));
     }
 
@@ -107,7 +107,7 @@ public class LoginForm {
         WebElement loginButton = driver.findElement(By.tagName("button")); // //button
         loginButton.click();
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); // dozdatsja sled str.zamesto sleep
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20)); /
         //WebElement until =
                 wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("ng-binding")));
 
