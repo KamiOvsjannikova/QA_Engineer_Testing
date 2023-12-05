@@ -35,20 +35,20 @@ public class MathCalc {
     }
 
     public double funcCalc(double x) {
-        return log(abs(12 * sin(x))); // za modul kot. otvechaet eto - abs
+        return log(abs(12 * sin(x))); 
     }
 
     @Test
     public void validAnswer() {
-        WebElement x = driver.findElement(By.id("input_value")); // schitali x - pri pomowi id
+        WebElement x = driver.findElement(By.id("input_value")); 
         System.out.println(x.getText());
-        double xValue = parseDouble(x.getText()); //preobrazovatj  strocku getText() v double
+        double xValue = parseDouble(x.getText()); 
         System.out.println(xValue);
-        double result = funcCalc(xValue);// method get text zabiraet t   chislo v vide stroki // budet chislo
+        double result = funcCalc(xValue);
         WebElement answerInputField =
                 driver.findElement(By.id("answer"));
         //iz double prevratitj v stroku
-        answerInputField.sendKeys(String.valueOf(result)); // bil double stal strockoj
+        answerInputField.sendKeys(String.valueOf(result)); 
         // sleep(5000);
 
         ///check checkbox I'm the robot
