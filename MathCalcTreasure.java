@@ -28,13 +28,13 @@ public class MathCalcTreasure {
         driver.get("https://suninjuly.github.io/get_attribute.html");
     }
 
-    @AfterEach//metod ,kotorij pozvoljaet zakrivatj brauzer posle kazhdogo testa, dazhe ,esli test padaet
+    @AfterEach
     public void tearDown() {
         driver.quit();
     }
 
     public double funcCalc(double x) {
-        return log(abs(12 * sin(x))); // za modul kot. otvechaet eto - abs
+        return log(abs(12 * sin(x))); 
     }
 
     @Test
@@ -43,11 +43,11 @@ public class MathCalcTreasure {
         String xValueString = treasureImage.getAttribute("valuex");
         double xValue = parseDouble(xValueString);
         System.out.println(xValue);
-        double result = funcCalc(xValue);// method get text zabiraet t   chislo v vide stroki // budet chislo
+        double result = funcCalc(xValue);
         WebElement answerInputField =
                 driver.findElement(By.id("answer"));
         //iz double prevratitj v stroku
-        answerInputField.sendKeys(String.valueOf(result)); // bil double stal strockoj
+        answerInputField.sendKeys(String.valueOf(result)); 
         // sleep(5000);
 
 
