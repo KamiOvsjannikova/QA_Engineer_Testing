@@ -10,10 +10,9 @@ public class BaseTest {
         final String BASE_URL = "https://demowebshop.tricentis.com/";
         @Before
         public  void setUp() {
-            open(BASE_URL); // argument - eto ssilka //open -eto dlja otkritija str
-            SelenideLogger.addListener("AllureSelenide", new AllureSelenide());//sluwaet chto proisxodit i prik scrennshot
-        }
-        //zaverwatj browser dlja togo chto bi vse testi prowli ne zavisimo drug ot druga
+            open(BASE_URL); 
+            SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
         @After
         public void tearDown(){
             closeWebDriver();//zakritj browser
